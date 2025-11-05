@@ -43,7 +43,7 @@ export default function Hero() {
           absolute
           bottom-[80px]       /* 🔹 agora ela sempre fica visível */
           left-1/2
-          translate-x-35%  /* 🔹 desloca mais pra fora, sem cortar */
+          translate-x-[35%]  /* 🔹 desloca mais pra fora, sem cortar */
           md:left-auto
           md:right-0
           md:translate-x-[20%]
