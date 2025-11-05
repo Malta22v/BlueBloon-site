@@ -1,44 +1,12 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from './ui/button';
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [bottomOffset, setBottomOffset] = useState(-60); // posição inicial no mobile
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (!heroRef.current) return;
-
-      const height = heroRef.current.offsetHeight;
-      const width = window.innerWidth;
-
-      // cálculo adaptativo
-      if (width < 640) {
-        // telas pequenas (celular)
-        setBottomOffset(-(height * 0.02)); // 2% da altura da section
-      } else if (width < 1024) {
-        // tablets e laptops
-        setBottomOffset(height * 0.05);
-      } else {
-        // desktops grandes
-        setBottomOffset(height * 0.1);
-      }
-    };
-
-    handleResize(); // calcula na montagem
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
-    <section
-      ref={heroRef}
-      className="relative flex flex-col items-center justify-center text-center py-32 px-6 bg-gradient-to-r from-blue-600 to-teal-400 text-white overflow-hidden"
-    >
+    <section className="relative flex flex-col items-center justify-center text-center py-32 px-6 bg-gradient-to-r from-blue-600 to-teal-400 text-white overflow-hidden">
       {/* ===== Título principal ===== */}
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
@@ -71,19 +39,23 @@ export default function Hero() {
       <motion.div
         animate={{ y: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-        style={{
-          position: 'absolute',
-          right: window.innerWidth < 768 ? -80 : -200,
-          bottom: bottomOffset,
-        }}
-        className="pointer-events-none select-none"
+        className="
+          absolute 
+          bottom-[-180px]      /* 🔽 desce bastante no mobile */
+          right-[-90px]
+          sm:bottom-[-220px]   /* telas pequenas */
+          md:bottom-[80px]     /* 🔼 sobe no desktop */
+          md:right-[-160px]
+          lg:right-[-220px]
+          pointer-events-none select-none
+        "
       >
         <Image
           src="/capsules.png"
           alt="Cápsulas BlueBloon"
-          width={window.innerWidth < 768 ? 350 : 750}
-          height={window.innerWidth < 768 ? 350 : 750}
-          className="opacity-60 drop-shadow-xl transition-all duration-500"
+          width={750}
+          height={750}
+          className="opacity-60 drop-shadow-xl w-[280px] sm:w-[350px] md:w-[550px]"
         />
       </motion.div>
 
