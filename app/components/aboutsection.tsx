@@ -17,7 +17,7 @@ export default function AboutSection() {
         className="max-w-md"
       >
         <Image
-          src="/public/happy-person.jpg"
+          src="/happy-person.jpg"
           alt="Pessoa saudável"
           width={400}
           height={400}
