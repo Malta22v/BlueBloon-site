@@ -41,10 +41,10 @@ export default function Hero() {
         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
         className="
           absolute 
-          bottom-[-180px]      /* 🔽 desce bastante no mobile */
-          right-[-90px]
-          sm:bottom-[-220px]   /* telas pequenas */
-          md:bottom-[80px]     /* 🔼 sobe no desktop */
+          bottom-[-60px]       /* 🔼 subimos no mobile */
+          right-[-70px]
+          sm:bottom-[-80px]    /* levemente mais baixo em telas médias */
+          md:bottom-[80px]     /* desktop */
           md:right-[-160px]
           lg:right-[-220px]
           pointer-events-none select-none
@@ -55,7 +55,7 @@ export default function Hero() {
           alt="Cápsulas BlueBloon"
           width={750}
           height={750}
-          className="opacity-60 drop-shadow-xl w-[280px] sm:w-[350px] md:w-[550px]"
+          className="opacity-60 drop-shadow-xl w-[250px] sm:w-[320px] md:w-[550px]"
         />
       </motion.div>
 
