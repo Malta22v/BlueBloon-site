@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center text-center py-32 px-6 bg-gradient-to-r from-blue-600 to-teal-400 text-white overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center text-center py-32 px-6 bg-gradient-to-r from-blue-600 to-teal-400 text-white">
       {/* ===== Título principal ===== */}
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
@@ -40,13 +40,13 @@ export default function Hero() {
         animate={{ y: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
         className="
-          absolute 
-          bottom-[-60px]       /* 🔼 subimos no mobile */
-          right-[-70px]
-          sm:bottom-[-80px]    /* levemente mais baixo em telas médias */
-          md:bottom-[80px]     /* desktop */
-          md:right-[-160px]
-          lg:right-[-220px]
+          absolute
+          bottom-[80px]       /* 🔹 agora ela sempre fica visível */
+          left-1/2
+          translate-x-1/2  /* 🔹 desloca mais pra fora, sem cortar */
+          md:left-auto
+          md:right-0
+          md:translate-x-[20%]
           pointer-events-none select-none
         "
       >
@@ -55,7 +55,10 @@ export default function Hero() {
           alt="Cápsulas BlueBloon"
           width={750}
           height={750}
-          className="opacity-60 drop-shadow-xl w-[250px] sm:w-[320px] md:w-[550px]"
+          className="
+            opacity-60 drop-shadow-xl
+            w-[220px] sm:w-[300px] md:w-[500px] lg:w-[600px]
+          "
         />
       </motion.div>
 
